@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class TCPClient {
+public class TCPClient extends Thread{
     private Socket client;
 
     public TCPClient(Socket socket){
@@ -17,7 +17,7 @@ public class TCPClient {
             client = new Socket(address,port);
             PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
             for (int i =0 ;i<10;i++){
-                writer.println("TCP" + i);
+                writer.println("TCP message" + i);
                 Thread.sleep(1000);
             }
             client.close();
