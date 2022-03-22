@@ -7,10 +7,13 @@ import java.net.UnknownHostException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * @author gongyihui
+ */
 public class TCPServer extends Thread {
+    private static final Logger logger = LogManager.getLogger(TCPServer.class);
     private ServerSocket serversocket;
     private int port;
-    private static final Logger logger = LogManager.getLogger(TCPServer.class);
 
     public TCPServer(int port,int timeout){
         this.port = port;
@@ -25,22 +28,25 @@ public class TCPServer extends Thread {
     /**
      * It is used to connection between client and server
      * */
-@Override
-    public void run(){
+    public void connection(){
         while (true){
-            try{
-                Socket server = serversocket.accept();
-                BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
-                String line;
-                while((line = in.readLine())!= null){
-                    System.out.println(line+ "received");
-                }
-                server.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            try {
+                acceptConnection();
+            }catch (Exception e){
+                e.getMessage();
+                logger.error("connection failed in server");
             }
         }
     }
+    /**
+     * it is used to accept client connection
+
+     * */
+
+    public void acceptConnection() throws IOException {
+        this.serversocket.accept();
+    }
+
     /**
      * It is used to get the server's address
      * */

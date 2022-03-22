@@ -1,9 +1,13 @@
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author gongyihui
+ */
 public class Controller extends TCPServer{
     private int cport;
     private int R;
@@ -14,14 +18,24 @@ public class Controller extends TCPServer{
     private HashMap<String,List<Integer>> file ;
 
 
-    public Controller(int cport,int R,int timeout,int rebalance_period){
+    public Controller(int cport,int R,int timeout,int rebalance_period) throws IOException {
         super(cport,timeout);
         this.cport = cport;
         this.R = R;
         this.timeout = timeout;
         this.rebalance_period = rebalance_period;
         server = new TCPServer(cport,timeout);
-        server.run();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    server.acceptConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                start();
+            }
+        }).start();
     }
 
     public void store(Socket client, String fileName, int fileSize){

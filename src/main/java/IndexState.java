@@ -1,3 +1,7 @@
+/**
+ * @author gongyihui
+ */
+
 public enum IndexState {
     READY,
     STORE_IN_PROGRESS,

@@ -1,5 +1,8 @@
 import java.net.UnknownHostException;
 
+/**
+ * @author gongyihui
+ */
 public class Dstores {
     private int port;
     private int cport;
@@ -15,4 +18,5 @@ public class Dstores {
         this.server.start();
         this.client.connection(server.getAddress(),port);
     }
+
 }
