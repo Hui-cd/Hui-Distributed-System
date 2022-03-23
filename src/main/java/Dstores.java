@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
@@ -8,7 +10,7 @@ public class Dstores {
     private int cport;
     private int timeout;
     private String file_folder;
-    private TCPServer server;
+    private  TCPServer server;
     private TCPClient client;
 
     public Dstores(int port,int cport,int timeout) throws UnknownHostException {
@@ -19,4 +21,7 @@ public class Dstores {
         this.client.connection(server.getAddress(),port);
     }
 
+    public void store(Socket client, String fileName, int fileSize){
+
+    }
 }
