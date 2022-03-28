@@ -31,7 +31,7 @@ public class TCPServer extends Thread {
     public void connection(){
         while (true){
             try {
-                acceptConnection();
+                this.serversocket.accept();
             }catch (Exception e){
                 e.getMessage();
                 logger.error("connection failed in server");
@@ -42,10 +42,6 @@ public class TCPServer extends Thread {
      * it is used to accept client connection
 
      * */
-
-    public void acceptConnection() throws IOException {
-        this.serversocket.accept();
-    }
 
     /**
      * It is used to get the server's address
