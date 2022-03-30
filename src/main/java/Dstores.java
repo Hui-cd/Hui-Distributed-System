@@ -65,7 +65,22 @@ public class Dstores {
     }
 
     public void loadData(Socket client ,String fileName){
-        
+        try {
+            client.setSoTimeout(this.timeout);
+            printWriter = new PrintWriter(client.getOutputStream(),true);
+            if (files.containsKey(fileName)){
+                byte[] fileContent = Files.readAllBytes(files.get(fileName).toPath());
+                client.getOutputStream().write(fileContent);
+                printWriter.close();
+                client.close();
+            }
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
 
+    public void removeFile(String fileName){
+        files.get(fileName).delete();
+        files.remove(fileName);
+    }
 }

@@ -83,16 +83,12 @@ public class Controller extends TCPServer{
 
     public void store_ack(Socket client, String fileName) throws IOException {
         if (filePort.containsKey(fileName)){
-            printWriter.println(failureHandling.STORE_TO_TOKEN);
+            printWriter.println(failureHandling.STORE_COMPLETE);
         }else{
             logger.error("Error, store ack fail");
         }
     }
 
-    public List<Integer> getRports(ArrayList port, ArrayList destorePorts){
-       port = (ArrayList) destorePorts.subList(0,R);
-       return port;
-    }
     /**
      * 这用来加入Destore
      * */
@@ -115,8 +111,19 @@ public class Controller extends TCPServer{
        client.setSoTimeout(timeout);
        printWriter = new PrintWriter(client.getOutputStream(),true);
        bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-       fileState.put(fileName,IndexState.LOAD_IN_PROGRESS);
+       if (!filePort.containsKey(fileName)){
+           printWriter.println(failureHandling.ERROR_FILE_DOES_NOT_EXIST);
+           return;
+       }
+       if (dstoresSet.size()<= R){
+           printWriter.println(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
+           return;
+       }
 
+       fileState.put(fileName,IndexState.LOAD_IN_PROGRESS);
+       if (!loadCount.containsKey(fileName)){
+           loadCount.put(fileName,1);
+       }
    }
 
    /**
@@ -129,4 +136,22 @@ public class Controller extends TCPServer{
        dstoresSet.add(dstores);
    }
 
+   /**
+    * 这用来remove文件
+    * */
+   public void remove(Socket client, String fileName) throws IOException {
+       printWriter = new PrintWriter(client.getOutputStream(),true);
+       if (dstoresSet.size()<R){
+           printWriter.println(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
+           return;
+       }
+       if (!filePort.containsKey(fileName)){
+           printWriter.println(failureHandling.ERROR_FILE_DOES_NOT_EXIST);
+           return;
+       }
+       if (filePort.containsKey(fileName)){
+           filePort.remove(fileName);
+           printWriter.println(failureHandling.REMOVE_COMPLETE);
+       }
+   }
 }
