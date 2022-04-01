@@ -1,5 +1,4 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +14,7 @@ import java.util.Set;
  * @author gongyihui
  */
 public class Controller extends TCPServer{
-    private Logger logger = LogManager.getLogger(Controller.class);
+
 
     private int cport;
     private int R;
@@ -44,20 +43,17 @@ public class Controller extends TCPServer{
     private HashMap<String,IndexState> fileState = new HashMap<>();
 
     public Controller(int cport,int R,int timeout,int rebalance_period) throws IOException {
-        super(cport,timeout);
         this.cport = cport;
         this.R = R;
         this.timeout = timeout;
         this.rebalance_period = rebalance_period;
-        server = new TCPServer(cport,timeout);
-        server.connection();
+        server.connection(cport,timeout);
     }
 
     public void store(Socket client, String fileName, int fileSize){
         try {
             // 检查文件格式
             if (fileName == null|| fileName == ""||fileName.trim() == ""){
-                logger.error("filename 格式不正确");
                 return;
 
             }
@@ -66,14 +62,20 @@ public class Controller extends TCPServer{
                 printWriter.println(failureHandling.ERROR_FILE_ALREADY_EXISTS_STORE);
                 return;
             }
+            //检查是否有足够的 store
             if (dstoresSet.size()<=R){
                 printWriter.println(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
                 return;
             }
+            //更新index，表明处在ready状态
             if (!filePort.containsKey(fileName)){
                 fileState.put(fileName,IndexState.READY);
             }
+            //储存
             fileState.put(fileName,IndexState.STORE_IN_PROGRESS);
+            //0为起始
+            fileShareCount.put(fileName,0);
+            printWriter.println(fileName+ "store");
             printWriter.close();
             client.close();
         } catch (Exception e){
@@ -82,10 +84,10 @@ public class Controller extends TCPServer{
     }
 
     public void store_ack(Socket client, String fileName) throws IOException {
-        if (filePort.containsKey(fileName)){
+        if (fileShareCount.containsKey(fileName)){
+            fileShareCount.put(fileName,fileShareCount.get(fileName)+1);
             printWriter.println(failureHandling.STORE_COMPLETE);
         }else{
-            logger.error("Error, store ack fail");
         }
     }
 

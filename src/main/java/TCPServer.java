@@ -1,40 +1,34 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.UnknownHostException;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * @author gongyihui
  */
 public class TCPServer extends Thread {
-    private static final Logger logger = LogManager.getLogger(TCPServer.class);
+
     private ServerSocket serversocket;
     private int port;
+    private BufferedReader reader;
 
-    public TCPServer(int port,int timeout){
-        this.port = port;
-        try {
-            serversocket = new ServerSocket(port);
-            serversocket.setSoTimeout(10000);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     /**
      * It is used to connection between client and server
      * */
-    public void connection(){
+    public void connection(int port, int timeout){
         while (true){
             try {
+                serversocket = new ServerSocket(port);
                 this.serversocket.accept();
+                reader = new BufferedReader(new InputStreamReader(serversocket.accept().getInputStream()));
+                String line = "waiting...";
+                line = reader.readLine();
+                System.out.println(line);
             }catch (Exception e){
                 e.getMessage();
-                logger.error("connection failed in server");
             }
         }
     }

@@ -1,5 +1,4 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +14,6 @@ import java.util.HashMap;
  * @author gongyihui
  */
 public class Dstores {
-    private Logger logger = LogManager.getLogger(Dstores.class);
 
     private int port;
     private int cport;
@@ -33,7 +31,7 @@ public class Dstores {
         this.port =port;
         this.cport = cport;
         this.timeout = timeout;
-        this.server.start();
+        client.connection(server.getAddress(),cport);
     }
     /**
      * 这用来向controller加入dstores
