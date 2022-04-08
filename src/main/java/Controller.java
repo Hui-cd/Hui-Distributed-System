@@ -1,159 +1,157 @@
-
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
+
 
 /**
  * @author gongyihui
  */
 public class Controller extends TCPServer{
 
-
     private int cport;
     private int R;
     private int timeout;
     private int rebalance_period;
     private FailureHandling failureHandling;
-    private TCPServer server;
+    private Set<Dstores> dstoresSet ;
+    private Set<TCPClient> clientsSet;
     private Index index;
-    private ArrayList<Integer> port = new ArrayList<>();
-    private ArrayList<Integer> destorePorts = new ArrayList<>();
-    /**这用来储存要被储存的文件*/
-    private HashMap<String, Integer> fileShareCount = new HashMap<>();
-    /** loadCount为一个文件加载的次数*/
-    private HashMap<String, Integer> loadCount = new HashMap<>();
-    private Set<Dstores> dstoresSet;
-    private PrintWriter printWriter;
-    private BufferedReader bufferedReader;
-    private Dstores dstores;
-    /**
-     * filePort 是一个hashMap， key是文件名，value是端口，表示这个文件在哪些端口中保存
-     **/
-    private HashMap<String,List<Integer>> filePort = new HashMap<>(); ;
-    /**
-     * fileState 表示一个文件目前的状态
-     * */
-    private HashMap<String,IndexState> fileState = new HashMap<>();
-
-    public Controller(int cport,int R,int timeout,int rebalance_period) throws IOException {
+    public Controller(int cport, int R, int timeout, int rebalance_period) throws IOException {
+        super(cport);
         this.cport = cport;
         this.R = R;
         this.timeout = timeout;
         this.rebalance_period = rebalance_period;
-        server.connection(cport,timeout);
+        this.dstoresSet = new HashSet<>();
+        this.clientsSet = new HashSet<>();
     }
-
-    public void store(Socket client, String fileName, int fileSize){
-        try {
-            // 检查文件格式
-            if (fileName == null|| fileName == ""||fileName.trim() == ""){
-                return;
-
-            }
-            // 检查文件是否被储存
-            if (filePort.containsKey(fileName)){
-                printWriter.println(failureHandling.ERROR_FILE_ALREADY_EXISTS_STORE);
-                return;
-            }
-            //检查是否有足够的 store
-            if (dstoresSet.size()<=R){
-                printWriter.println(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
-                return;
-            }
-            //更新index，表明处在ready状态
-            if (!filePort.containsKey(fileName)){
-                fileState.put(fileName,IndexState.READY);
-            }
-            //储存
-            fileState.put(fileName,IndexState.STORE_IN_PROGRESS);
-            //0为起始
-            fileShareCount.put(fileName,0);
-            printWriter.println(fileName+ "store");
-            printWriter.close();
-            client.close();
-        } catch (Exception e){
-            e.getMessage();
-        }
-    }
-
-    public void store_ack(Socket client, String fileName) throws IOException {
-        if (fileShareCount.containsKey(fileName)){
-            fileShareCount.put(fileName,fileShareCount.get(fileName)+1);
-            printWriter.println(failureHandling.STORE_COMPLETE);
-        }else{
-        }
-    }
-
     /**
-     * 这用来加入Destore
+     * this is used to add dstores
+     * @param dstores
      * */
-    /**public void addDestore(Dstores dstores) throws IOException {
-        dstores.join(cport);
+    public void addDstores(Dstores dstores){
         dstoresSet.add(dstores);
-    }*/
+    }
+
     /**
-     * 这用来移除Destores
+     * this is used to remove dstores
+     * @param dstores
      * */
-    public void removeDestore(Dstores dstores){
+    public void removeDstores(Dstores dstores){
         dstoresSet.remove(dstores);
     }
 
-   /**
-    * 这用来加载文件
-    * */
+    /**
+     * this is used to add clients
+     * @param client
+     * */
 
-   public void load(Socket client,String fileName) throws IOException {
-       client.setSoTimeout(timeout);
-       printWriter = new PrintWriter(client.getOutputStream(),true);
-       bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-       if (!filePort.containsKey(fileName)){
-           printWriter.println(failureHandling.ERROR_FILE_DOES_NOT_EXIST);
-           return;
-       }
-       if (dstoresSet.size()<= R){
-           printWriter.println(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
-           return;
-       }
+    public void addClients(TCPClient client){
+        clientsSet.add(client);
+    }
 
-       fileState.put(fileName,IndexState.LOAD_IN_PROGRESS);
-       if (!loadCount.containsKey(fileName)){
-           loadCount.put(fileName,1);
-       }
-   }
+    /**
+     * this is used to remove client
+     * @param client
+     * */
+    public void removeClients(TCPClient client){
+        clientsSet.remove(client);
+    }
 
-   /**
-    * 这用来向dstoresSet加入Dstores
-    * @param port 加入的端口
-    * */
-   public void dstoresJoin(int port) throws IOException {
-       port = cport;
-       dstores.join(port);
-       dstoresSet.add(dstores);
-   }
+    /**
+     * this is used to sendMessage store requests
+     * @param client client
+     * @param filename file's name
+     * @param fileSize file's szie
+     * */
+    public void store(TCPClient client, String filename, int fileSize){
+        // check if there are enough dstores or not
+        if (checkDstoreNum()){
+            client.sendMessage(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
+            return;
+        }
+       // check fileName
+        if (checkFile(filename)){
+            return;
+        }
 
-   /**
-    * 这用来remove文件
-    * */
-   public void remove(Socket client, String fileName) throws IOException {
-       printWriter = new PrintWriter(client.getOutputStream(),true);
-       if (dstoresSet.size()<R){
-           printWriter.println(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
-           return;
-       }
-       if (!filePort.containsKey(fileName)){
-           printWriter.println(failureHandling.ERROR_FILE_DOES_NOT_EXIST);
-           return;
-       }
-       if (filePort.containsKey(fileName)){
-           filePort.remove(fileName);
-           printWriter.println(failureHandling.REMOVE_COMPLETE);
-       }
-   }
+        // check file is exist or not
+        if (!index.beginStore(filename,fileSize)){
+            client.sendMessage(failureHandling.ERROR_FILE_ALREADY_EXISTS_STORE);
+        }
+
+        // begin store
+        String token = failureHandling.STORE_TOKEN;
+
+        for ( Dstores dstore : dstoresSet){
+
+            token += " " + dstore.getPort();
+
+            client.sendMessage(token);
+        }
+        boolean complete = index.awaitStore(filename);
+        if (complete){
+            client.sendMessage(failureHandling.STORE_COMPLETE);
+        }
+
+        // store complete
+        index.endStore(filename,fileSize,dstoresSet,complete);
+    }
+
+    /**
+     * it is used to load file
+     * @param client
+     * @param filename
+     * @param i how many times
+     */
+
+    public void load(TCPClient client, String filename, int i){
+        try {
+            if (checkDstoreNum()){
+                client.sendMessage(failureHandling.ERROR_NOT_ENOUGH_DSTORES);
+                return;
+            }
+            dstoresSet = index.getFileDstores(filename);
+            if (dstoresSet==null){
+                client.sendMessage(failureHandling.ERROR_FILE_DOES_NOT_EXIST);
+            }else {
+                if (i>dstoresSet.size()){
+                    client.sendMessage(failureHandling.ERROR_LOAD);
+                }else {
+                    client.sendMessage(failureHandling.LOAD_TOKEN + " "+ dstoresSet.iterator().next().getPort()+" "+index.getFileDstores(filename));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    /**
+     * it is used to get R
+     * @return R
+     */
+    public int getR() {
+        return  R;
+    }
+
+    /**
+     * it is used to get time out
+     * @return timeout
+     */
+    public int getTimeout() {
+        return  timeout;
+    }
+    public boolean checkFile(String filename){
+        if (filename == null || filename == ""|| filename.trim() == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean checkDstoreNum(){
+        if (dstoresSet.size()<R){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

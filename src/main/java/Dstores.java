@@ -27,58 +27,29 @@ public class Dstores {
     private FailureHandling failureHandling;
     private HashMap<String, File> files = new HashMap<>();
 
-    public Dstores(int port,int cport,int timeout) throws UnknownHostException {
+    public Dstores(int port,int cport,int timeout,String filePath) throws UnknownHostException {
+        this.filePath = filePath;
         this.port =port;
         this.cport = cport;
         this.timeout = timeout;
-        client.connection(server.getAddress(),cport);
     }
     /**
      * 这用来向controller加入dstores
      * */
-    public void join(int port) throws IOException {
-        Socket socket = new Socket(server.getAddress(),this.cport);
-        printWriter = new PrintWriter(socket.getOutputStream(),true);
-        printWriter.println("join"+String.valueOf(port));
-        socket.close();
-        printWriter.close();
-    }
     /**
      * 储存文件
+     * @param fileName
+     * @param fileSize
      * */
-    public void store(Socket client, String fileName, int fileSize){
-        try {
-            client.setSoTimeout(this.timeout);
-            printWriter = new PrintWriter(client.getOutputStream(),true);
-            printWriter.println(FailureHandling.ACK_TOKEN);
-            byte[] fileContent = client.getInputStream().readNBytes(fileSize);
-            File file = new File(filePath+"/"+fileName);
-            Path path = Paths.get(file.getPath());
-            files.put(fileName,file);
-            printWriter.close();
-            client.close();
-        }catch (Exception e){
-            e.getMessage();
-        }
+    public void store(String fileName,int fileSize){
+        File file = new File(filePath+"/"+fileName);
+        Path path = Paths.get(file.getPath());
+        files.put(fileName,file);
     }
 
-    public void loadData(Socket client ,String fileName){
-        try {
-            client.setSoTimeout(this.timeout);
-            printWriter = new PrintWriter(client.getOutputStream(),true);
-            if (files.containsKey(fileName)){
-                byte[] fileContent = Files.readAllBytes(files.get(fileName).toPath());
-                client.getOutputStream().write(fileContent);
-                printWriter.close();
-                client.close();
-            }
-        }catch (Exception e){
-            e.getMessage();
-        }
-    }
+    public void load(){}
 
-    public void removeFile(String fileName){
-        files.get(fileName).delete();
-        files.remove(fileName);
+    public int getPort() {
+        return  port;
     }
 }

@@ -11,31 +11,11 @@ import java.net.UnknownHostException;
 public class TCPServer extends Thread {
 
     private ServerSocket serversocket;
-    private int port;
-    private BufferedReader reader;
 
-
-    /**
-     * It is used to connection between client and server
-     * */
-    public void connection(int port, int timeout){
-        while (true){
-            try {
-                serversocket = new ServerSocket(port);
-                this.serversocket.accept();
-                reader = new BufferedReader(new InputStreamReader(serversocket.accept().getInputStream()));
-                String line = "waiting...";
-                line = reader.readLine();
-                System.out.println(line);
-            }catch (Exception e){
-                e.getMessage();
-            }
-        }
+    public TCPServer(int port) throws IOException {
+        this.serversocket = new ServerSocket(port);
+        this.serversocket.accept();
     }
-    /**
-     * it is used to accept client connection
-
-     * */
 
     /**
      * It is used to get the server's address
@@ -44,5 +24,4 @@ public class TCPServer extends Thread {
         InetAddress address = InetAddress.getLocalHost();
         return address;
     }
-
 }
