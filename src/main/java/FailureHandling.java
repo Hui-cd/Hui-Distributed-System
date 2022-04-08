@@ -2,6 +2,9 @@
  * @author gongyihui
  */
 public class FailureHandling {
+    public  String LIST_TOKEN = "list";
+    public  String REMOVE_COMPLETE_TOKEN = "REMOVE_COMPLETE_TOKEN";
+    public  String REMOVE_TOKEN = "remove";
     public  String LOAD_TOKEN = "load";
     public  String ERROR_LOAD = "Error load";
     public  String STORE_COMPLETE = "STORE";

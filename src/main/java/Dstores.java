@@ -1,11 +1,8 @@
 
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.Socket;
 import java.net.UnknownHostException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -51,5 +48,12 @@ public class Dstores {
 
     public int getPort() {
         return  port;
+    }
+
+    public void remove(String fileName) {
+        files.remove(fileName);
+    }
+    public void sendMessage(String msg) {
+        LoggerProtocol.getInstance().messageSent(port,msg);
     }
 }

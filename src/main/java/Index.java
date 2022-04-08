@@ -20,6 +20,12 @@ public class Index {
        this.removeAcks = new HashMap<>();
    }
 
+    /**
+     * update store state to beginStore
+     * @param fileName
+     * @param size
+     * @return
+     */
    public boolean beginStore(String fileName, int size){
        if (index.containsKey(fileName)){
            return false;
@@ -35,6 +41,14 @@ public class Index {
        return true;
    }
 
+    /**
+     * update state to end
+     * @param fileName
+     * @param fileSizes
+     * @param dstoresSet
+     * @param success
+     */
+
    public void endStore(String fileName,int fileSizes, Set<Dstores> dstoresSet,boolean success){
        if (success){
            for (Dstores dstores: dstoresSet){
@@ -46,6 +60,53 @@ public class Index {
        }
    }
 
+    /**
+     * update state to begin remove
+     * @param fileName
+     * @return
+     */
+
+   public Set<Dstores> beginRemove(String fileName){
+       Set<Dstores> dstoresSet = new HashSet<>();
+       try {
+           dstoresSet = index.get(fileName);
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+       if (dstoresSet!= null){
+           try {
+               index.put(fileName,null);
+
+           }finally {
+               for (Dstores ds : dstoresSet){
+                   ds.remove(fileName);
+               }
+           }
+       }
+       return dstoresSet;
+   }
+
+    /**
+     * update state to end remove
+     * @param fileName
+     */
+
+   public void endRemove(String fileName){
+       try {
+           this.index.remove(fileName);
+           this.fileSize.remove(fileName);
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+   }
+
+    /**
+     * it is used to tell Controller await to store
+     * @param filename
+     * @return
+     */
+
     public boolean awaitStore(String filename) {
         try {
             return this.storeAcks.get(filename).await(this.controller.getTimeout(), TimeUnit.MILLISECONDS);
@@ -53,6 +114,12 @@ public class Index {
             return false;
         }
     }
+
+    /**
+     * it is used to get dstores which store files
+     * @param filename
+     * @return
+     */
     public Set<Dstores> getFileDstores(String filename) {
         Set<Dstores> ds = null;
         try {
@@ -65,4 +132,25 @@ public class Index {
         }
         return ds;
     }
+
+    /**
+     * it is used to tell controller await to remove fail
+     * @param filename
+     * @return
+     */
+    public boolean awaitRemove(String filename) {
+        try {
+            return this.removeAcks.get(filename).await(this.controller.getTimeout(), TimeUnit.MILLISECONDS);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * it is used to get all file which is stored
+     * @return
+     */
+    public Set<String> fileList() {
+       return this.index.keySet();
+   }
 }
