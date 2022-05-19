@@ -1,0 +1,382 @@
+12:13:33:626 Controller [INFO] Start controller with arguments: [port 12345] [replica 3] [timeout 100] [rebalance period 10000]
+12:13:33:749 Controller [MESSAGE] [12345 <-- 49466] JOIN 12347
+12:13:33:749 Controller [MESSAGE] [12345 <-- 49465] JOIN 12348
+12:13:33:755 Controller [INFO] New dstore [12348] joined 
+12:13:33:759 Controller [MESSAGE] [12345 <-- 49464] JOIN 12346
+12:13:33:760 Controller [INFO] New dstore [12346] joined 
+12:13:33:761 Controller [INFO] New dstore [12347] joined 
+12:13:43:337 Controller [INFO] ************** Start rebalance operation!!! **************
+12:13:43:338 Controller [MESSAGE] [12345 --> 49464] LIST
+12:13:43:339 Controller [MESSAGE] [12345 --> 49466] LIST
+12:13:43:340 Controller [MESSAGE] [12345 --> 49465] LIST
+12:13:43:343 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:13:43:343 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:13:43:343 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:13:43:344 Controller [INFO] ************** Start reallocation !!! **************
+12:13:43:346 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:13:43:346 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:13:43:346 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:13:43:348 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:13:43:348 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:13:43:348 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:13:43:349 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:13:53:349 Controller [INFO] ************** Start rebalance operation!!! **************
+12:13:53:350 Controller [MESSAGE] [12345 --> 49464] LIST
+12:13:53:350 Controller [MESSAGE] [12345 --> 49466] LIST
+12:13:53:351 Controller [MESSAGE] [12345 --> 49465] LIST
+12:13:53:353 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:13:53:353 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:13:53:353 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:13:53:354 Controller [INFO] ************** Start reallocation !!! **************
+12:13:53:354 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:13:53:355 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:13:53:356 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:13:53:357 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:13:53:357 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:13:53:357 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:13:53:358 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:14:03:358 Controller [INFO] ************** Start rebalance operation!!! **************
+12:14:03:359 Controller [MESSAGE] [12345 --> 49464] LIST
+12:14:03:360 Controller [MESSAGE] [12345 --> 49466] LIST
+12:14:03:360 Controller [MESSAGE] [12345 --> 49465] LIST
+12:14:03:362 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:14:03:362 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:14:03:363 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:14:03:363 Controller [INFO] ************** Start reallocation !!! **************
+12:14:03:363 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:14:03:363 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:14:03:364 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:14:03:365 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:14:03:366 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:14:03:366 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:14:03:366 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:14:13:366 Controller [INFO] ************** Start rebalance operation!!! **************
+12:14:13:366 Controller [MESSAGE] [12345 --> 49464] LIST
+12:14:13:366 Controller [MESSAGE] [12345 --> 49466] LIST
+12:14:13:367 Controller [MESSAGE] [12345 --> 49465] LIST
+12:14:13:368 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:14:13:369 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:14:13:369 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:14:13:369 Controller [INFO] ************** Start reallocation !!! **************
+12:14:13:369 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:14:13:370 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:14:13:370 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:14:13:372 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:14:13:372 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:14:13:372 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:14:13:373 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:14:23:373 Controller [INFO] ************** Start rebalance operation!!! **************
+12:14:23:374 Controller [MESSAGE] [12345 --> 49464] LIST
+12:14:23:375 Controller [MESSAGE] [12345 --> 49466] LIST
+12:14:23:375 Controller [MESSAGE] [12345 --> 49465] LIST
+12:14:23:383 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:14:23:387 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:14:23:389 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:14:23:390 Controller [INFO] ************** Start reallocation !!! **************
+12:14:23:390 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:14:23:391 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:14:23:392 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:14:23:401 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:14:23:403 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:14:23:404 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:14:23:407 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:14:33:407 Controller [INFO] ************** Start rebalance operation!!! **************
+12:14:33:407 Controller [MESSAGE] [12345 --> 49464] LIST
+12:14:33:407 Controller [MESSAGE] [12345 --> 49466] LIST
+12:14:33:408 Controller [MESSAGE] [12345 --> 49465] LIST
+12:14:33:409 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:14:33:410 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:14:33:410 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:14:33:410 Controller [INFO] ************** Start reallocation !!! **************
+12:14:33:411 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:14:33:411 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:14:33:411 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:14:33:413 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:14:33:413 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:14:33:413 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:14:33:414 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:14:43:414 Controller [INFO] ************** Start rebalance operation!!! **************
+12:14:43:414 Controller [MESSAGE] [12345 --> 49464] LIST
+12:14:43:416 Controller [MESSAGE] [12345 --> 49466] LIST
+12:14:43:416 Controller [MESSAGE] [12345 --> 49465] LIST
+12:14:43:421 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:14:43:421 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:14:43:422 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:14:43:422 Controller [INFO] ************** Start reallocation !!! **************
+12:14:43:422 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:14:43:422 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:14:43:423 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:14:43:435 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:14:43:436 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:14:43:436 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:14:43:437 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:14:53:437 Controller [INFO] ************** Start rebalance operation!!! **************
+12:14:53:437 Controller [MESSAGE] [12345 --> 49464] LIST
+12:14:53:438 Controller [MESSAGE] [12345 --> 49466] LIST
+12:14:53:438 Controller [MESSAGE] [12345 --> 49465] LIST
+12:14:53:439 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:14:53:440 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:14:53:440 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:14:53:440 Controller [INFO] ************** Start reallocation !!! **************
+12:14:53:441 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:14:53:441 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:14:53:441 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:14:53:443 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:14:53:443 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:14:53:445 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:14:53:445 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:15:03:445 Controller [INFO] ************** Start rebalance operation!!! **************
+12:15:03:445 Controller [MESSAGE] [12345 --> 49464] LIST
+12:15:03:446 Controller [MESSAGE] [12345 --> 49466] LIST
+12:15:03:446 Controller [MESSAGE] [12345 --> 49465] LIST
+12:15:03:447 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:15:03:447 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:15:03:448 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:15:03:448 Controller [INFO] ************** Start reallocation !!! **************
+12:15:03:448 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:15:03:449 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:15:03:449 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:15:03:451 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:15:03:451 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:15:03:452 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:15:03:452 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:15:13:452 Controller [INFO] ************** Start rebalance operation!!! **************
+12:15:13:452 Controller [MESSAGE] [12345 --> 49464] LIST
+12:15:13:453 Controller [MESSAGE] [12345 --> 49466] LIST
+12:15:13:453 Controller [MESSAGE] [12345 --> 49465] LIST
+12:15:13:458 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:15:13:460 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:15:13:461 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:15:13:461 Controller [INFO] ************** Start reallocation !!! **************
+12:15:13:461 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:15:13:462 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:15:13:462 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:15:13:464 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:15:13:465 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:15:13:465 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:15:13:466 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:15:23:466 Controller [INFO] ************** Start rebalance operation!!! **************
+12:15:23:466 Controller [MESSAGE] [12345 --> 49464] LIST
+12:15:23:466 Controller [MESSAGE] [12345 --> 49466] LIST
+12:15:23:466 Controller [MESSAGE] [12345 --> 49465] LIST
+12:15:23:469 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:15:23:469 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:15:23:470 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:15:23:470 Controller [INFO] ************** Start reallocation !!! **************
+12:15:23:470 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:15:23:470 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:15:23:471 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:15:23:472 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:15:23:473 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:15:23:472 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:15:23:473 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:15:33:473 Controller [INFO] ************** Start rebalance operation!!! **************
+12:15:33:473 Controller [MESSAGE] [12345 --> 49464] LIST
+12:15:33:473 Controller [MESSAGE] [12345 --> 49466] LIST
+12:15:33:473 Controller [MESSAGE] [12345 --> 49465] LIST
+12:15:33:475 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:15:33:475 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:15:33:475 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:15:33:476 Controller [INFO] ************** Start reallocation !!! **************
+12:15:33:476 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:15:33:476 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:15:33:476 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:15:33:478 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:15:33:479 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:15:33:479 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:15:33:479 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:15:43:479 Controller [INFO] ************** Start rebalance operation!!! **************
+12:15:43:479 Controller [MESSAGE] [12345 --> 49464] LIST
+12:15:43:479 Controller [MESSAGE] [12345 --> 49466] LIST
+12:15:43:480 Controller [MESSAGE] [12345 --> 49465] LIST
+12:15:43:482 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:15:43:482 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:15:43:482 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:15:43:483 Controller [INFO] ************** Start reallocation !!! **************
+12:15:43:484 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:15:43:484 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:15:43:484 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:15:43:486 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:15:43:486 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:15:43:486 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:15:43:487 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:15:53:487 Controller [INFO] ************** Start rebalance operation!!! **************
+12:15:53:487 Controller [MESSAGE] [12345 --> 49464] LIST
+12:15:53:487 Controller [MESSAGE] [12345 --> 49466] LIST
+12:15:53:487 Controller [MESSAGE] [12345 --> 49465] LIST
+12:15:53:489 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:15:53:490 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:15:53:490 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:15:53:490 Controller [INFO] ************** Start reallocation !!! **************
+12:15:53:490 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:15:53:490 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:15:53:491 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:15:53:492 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:15:53:491 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:15:53:492 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:15:53:492 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:16:03:492 Controller [INFO] ************** Start rebalance operation!!! **************
+12:16:03:492 Controller [MESSAGE] [12345 --> 49464] LIST
+12:16:03:492 Controller [MESSAGE] [12345 --> 49466] LIST
+12:16:03:492 Controller [MESSAGE] [12345 --> 49465] LIST
+12:16:03:494 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:16:03:494 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:16:03:495 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:16:03:495 Controller [INFO] ************** Start reallocation !!! **************
+12:16:03:495 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:16:03:495 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:16:03:495 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:16:03:497 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:16:03:497 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:16:03:497 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:16:03:498 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:16:13:498 Controller [INFO] ************** Start rebalance operation!!! **************
+12:16:13:498 Controller [MESSAGE] [12345 --> 49464] LIST
+12:16:13:498 Controller [MESSAGE] [12345 --> 49466] LIST
+12:16:13:498 Controller [MESSAGE] [12345 --> 49465] LIST
+12:16:13:501 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:16:13:501 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:16:13:501 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:16:13:501 Controller [INFO] ************** Start reallocation !!! **************
+12:16:13:501 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:16:13:502 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:16:13:502 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:16:13:504 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:16:13:505 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:16:13:504 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:16:13:505 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:16:23:505 Controller [INFO] ************** Start rebalance operation!!! **************
+12:16:23:505 Controller [MESSAGE] [12345 --> 49464] LIST
+12:16:23:505 Controller [MESSAGE] [12345 --> 49466] LIST
+12:16:23:505 Controller [MESSAGE] [12345 --> 49465] LIST
+12:16:23:507 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:16:23:507 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:16:23:508 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:16:23:508 Controller [INFO] ************** Start reallocation !!! **************
+12:16:23:508 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:16:23:508 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:16:23:508 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:16:23:512 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:16:23:511 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:16:23:514 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:16:23:515 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:16:33:515 Controller [INFO] ************** Start rebalance operation!!! **************
+12:16:33:516 Controller [MESSAGE] [12345 --> 49464] LIST
+12:16:33:516 Controller [MESSAGE] [12345 --> 49466] LIST
+12:16:33:516 Controller [MESSAGE] [12345 --> 49465] LIST
+12:16:33:519 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:16:33:519 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:16:33:519 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:16:33:519 Controller [INFO] ************** Start reallocation !!! **************
+12:16:33:520 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:16:33:520 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:16:33:520 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:16:33:523 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:16:33:523 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:16:33:523 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:16:33:524 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:16:43:524 Controller [INFO] ************** Start rebalance operation!!! **************
+12:16:43:524 Controller [MESSAGE] [12345 --> 49464] LIST
+12:16:43:524 Controller [MESSAGE] [12345 --> 49466] LIST
+12:16:43:524 Controller [MESSAGE] [12345 --> 49465] LIST
+12:16:43:526 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:16:43:526 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:16:43:527 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:16:43:527 Controller [INFO] ************** Start reallocation !!! **************
+12:16:43:527 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:16:43:527 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:16:43:527 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:16:43:530 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:16:43:531 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:16:43:533 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:16:43:533 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:16:53:533 Controller [INFO] ************** Start rebalance operation!!! **************
+12:16:53:533 Controller [MESSAGE] [12345 --> 49464] LIST
+12:16:53:533 Controller [MESSAGE] [12345 --> 49466] LIST
+12:16:53:533 Controller [MESSAGE] [12345 --> 49465] LIST
+12:16:53:535 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:16:53:535 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:16:53:535 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:16:53:535 Controller [INFO] ************** Start reallocation !!! **************
+12:16:53:535 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:16:53:535 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:16:53:536 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:16:53:538 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:16:53:539 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:16:53:542 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:16:53:542 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:17:03:542 Controller [INFO] ************** Start rebalance operation!!! **************
+12:17:03:543 Controller [MESSAGE] [12345 --> 49464] LIST
+12:17:03:544 Controller [MESSAGE] [12345 --> 49466] LIST
+12:17:03:545 Controller [MESSAGE] [12345 --> 49465] LIST
+12:17:03:546 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:17:03:547 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:17:03:547 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:17:03:547 Controller [INFO] ************** Start reallocation !!! **************
+12:17:03:548 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:17:03:548 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:17:03:548 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:17:03:552 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:17:03:552 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:17:03:552 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:17:03:553 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:17:13:553 Controller [INFO] ************** Start rebalance operation!!! **************
+12:17:13:553 Controller [MESSAGE] [12345 --> 49464] LIST
+12:17:13:553 Controller [MESSAGE] [12345 --> 49466] LIST
+12:17:13:553 Controller [MESSAGE] [12345 --> 49465] LIST
+12:17:13:556 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:17:13:556 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:17:13:556 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:17:13:556 Controller [INFO] ************** Start reallocation !!! **************
+12:17:13:556 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:17:13:556 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:17:13:557 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:17:13:558 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:17:13:558 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:17:13:559 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:17:13:559 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:17:23:559 Controller [INFO] ************** Start rebalance operation!!! **************
+12:17:23:559 Controller [MESSAGE] [12345 --> 49464] LIST
+12:17:23:560 Controller [MESSAGE] [12345 --> 49466] LIST
+12:17:23:561 Controller [MESSAGE] [12345 --> 49465] LIST
+12:17:23:566 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:17:23:566 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:17:23:569 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:17:23:569 Controller [INFO] ************** Start reallocation !!! **************
+12:17:23:570 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:17:23:570 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:17:23:571 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:17:23:579 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:17:23:580 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:17:23:583 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:17:23:583 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:17:33:583 Controller [INFO] ************** Start rebalance operation!!! **************
+12:17:33:583 Controller [MESSAGE] [12345 --> 49464] LIST
+12:17:33:583 Controller [MESSAGE] [12345 --> 49466] LIST
+12:17:33:583 Controller [MESSAGE] [12345 --> 49465] LIST
+12:17:33:585 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:17:33:585 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:17:33:585 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:17:33:585 Controller [INFO] ************** Start reallocation !!! **************
+12:17:33:585 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:17:33:585 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:17:33:586 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:17:33:587 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:17:33:587 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:17:33:587 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:17:33:588 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
+12:17:43:749 Controller [INFO] ************** Start rebalance operation!!! **************
+12:17:43:750 Controller [MESSAGE] [12345 --> 49464] LIST
+12:17:43:751 Controller [MESSAGE] [12345 --> 49466] LIST
+12:17:43:751 Controller [MESSAGE] [12345 --> 49465] LIST
+12:17:43:752 Controller [MESSAGE] [12345 <-- 49464] LIST
+12:17:43:753 Controller [MESSAGE] [12345 <-- 49466] LIST
+12:17:43:753 Controller [MESSAGE] [12345 <-- 49465] LIST
+12:17:43:753 Controller [INFO] ************** Start reallocation !!! **************
+12:17:43:753 Controller [MESSAGE] [12345 --> 49464] REBALANCE 0 0
+12:17:43:754 Controller [MESSAGE] [12345 --> 49466] REBALANCE 0 0
+12:17:43:754 Controller [MESSAGE] [12345 --> 49465] REBALANCE 0 0
+12:17:43:756 Controller [MESSAGE] [12345 <-- 49464] REBALANCE_COMPLETE
+12:17:43:757 Controller [MESSAGE] [12345 <-- 49466] REBALANCE_COMPLETE
+12:17:43:758 Controller [MESSAGE] [12345 <-- 49465] REBALANCE_COMPLETE
+12:17:43:758 Controller [INFO] ************** Rebalance operation Succeeded!!! **************
