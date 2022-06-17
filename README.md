@@ -1,6 +1,5 @@
 # Comp2207_Coursework
-The CourseWork of Comp2207
-it is a distrubute store system
+HDFS is a distrubute store system by Hui
 ## How to use it
 The zip includes a bash script (validate_submission.sh) and a Java policy file (my_policy.policy). The script will (1) unzip your submission, (2) check all required files are included, (3) compile all the Java sources, (4) run Controller and Dstores.
 The script is meant to be run in a UNIX terminal. Make sure both the script and the Java policy file are unzipped in the same directory. You may need to make the script executable using the following command
